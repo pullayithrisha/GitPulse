@@ -1,50 +1,70 @@
 import React from 'react';
-import { GitPullRequest, Code, Database, Globe } from 'lucide-react';
+import { Compass, Layers, LineChart, CheckCircle2, Globe, Heart } from 'lucide-react';
+
+const aboutDetails = [
+  {
+    icon: <Compass size={28} />,
+    title: "Our Mission",
+    desc: "GitPulse was created to bridge the gap between raw repository activity and explainable, structured metrics. We believe that public open-source contributions tell a unique developer story. Our goal is to make that story clear and actionable.",
+    color: "#7F77DD"
+  },
+  {
+    icon: <Layers size={28} />,
+    title: "Asynchronous Speed",
+    desc: "Powered by FastAPI and Python, our backend utilizes asyncio.gather and connection semaphores to fetch and process dozens of repository metadata concurrently, keeping analysis times lightning fast.",
+    color: "#3F8F6F"
+  },
+  {
+    icon: <LineChart size={28} />,
+    title: "Actionable Insights",
+    desc: "Instead of just showing numbers, GitPulse provides rule-based recommendations. It guides you step-by-step on how to improve your score by adding licenses, readmes, and maintaining consistent commit schedules.",
+    color: "#3B82F6"
+  },
+  {
+    icon: <CheckCircle2 size={28} />,
+    title: "Developer Matchups",
+    desc: "Recruiters and hiring managers can test up to 3 developers concurrently. We spin up parallel SSE streams to compare side-by-side cards and crown the winner dynamically.",
+    color: "#D9A441"
+  },
+  {
+    icon: <Globe size={28} />,
+    title: "Data Layer",
+    desc: "Integrates both GitHub REST API (v3) and GraphQL API (v4) to aggregate deep commit histories and rich public metadata directly from the source.",
+    color: "#F43F5E"
+  },
+  {
+    icon: <Heart size={28} />,
+    title: "100% Free to Use",
+    desc: "GitPulse operates entirely free of charge. By leveraging public GitHub endpoints, we ensure that every developer can audit their profile without any subscription barriers.",
+    color: "#857C6E"
+  }
+];
 
 function AboutView() {
   return (
-    <div className="about-container-simple">
-      <div className="about-header-simple">
-        <GitPullRequest size={48} color="#7F77DD" style={{ marginBottom: '16px' }} />
-        <h2 className="about-title-simple">About GitPulse</h2>
-        <p className="about-subtitle-simple">Providing actionable, explainable GitHub profile analytics.</p>
+    <div className="methodology-container">
+      <div className="methodology-intro">
+        <h2>About GitPulse</h2>
+        <p>Providing developers and recruiters with actionable, high-fidelity profile health analytics built on modern open-source technologies.</p>
       </div>
 
-      <div className="about-content-simple glass-card">
-        <section className="about-section-simple">
-          <h3>Our Mission</h3>
-          <p>
-            GitPulse was created to bridge the gap between raw repository activity and explainable, structured metrics. We believe that public open-source contributions tell a unique developer story. Our goal is to make that story clear and actionable for developers, recruiters, and open-source maintainers.
-          </p>
-        </section>
-
-        <section className="about-section-simple">
-          <h3>How It's Built</h3>
-          <p>
-            The platform is engineered using a modern, full-stack architecture prioritizing speed and concurrency:
-          </p>
-          <ul className="about-list-simple">
-            <li>
-              <Code size={18} color="#3F8F6F" />
-              <strong>Frontend:</strong> Built with React and Vite, featuring custom CSS styling and interactive Recharts data visualizations.
-            </li>
-            <li>
-              <Database size={18} color="#3B82F6" />
-              <strong>Backend:</strong> Powered by FastAPI and Python, utilizing <code>asyncio.gather</code> and connection semaphores to fetch and process dozens of repository metadata concurrently.
-            </li>
-            <li>
-              <Globe size={18} color="#D9A441" />
-              <strong>Data Layer:</strong> Integrates both GitHub REST API (v3) and GraphQL API (v4) to aggregate deep commit histories seamlessly.
-            </li>
-          </ul>
-        </section>
-
-        <section className="about-section-simple">
-          <h3>Free & Open Source</h3>
-          <p>
-            GitPulse operates entirely free of charge. By leveraging public GitHub API endpoints, we ensure that every developer can audit their profile and gain actionable insights without any barriers.
-          </p>
-        </section>
+      <div className="methodology-grid">
+        {aboutDetails.map((item, index) => (
+          <div key={index} className="glass-card methodology-card">
+            <div className="methodology-card-header">
+              <div 
+                className="methodology-icon" 
+                style={{ color: item.color, backgroundColor: `${item.color}15` }}
+              >
+                {item.icon}
+              </div>
+              <div className="methodology-title-group">
+                <h4 style={{ fontSize: '18px' }}>{item.title}</h4>
+              </div>
+            </div>
+            <p className="methodology-desc" style={{ marginTop: '12px' }}>{item.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

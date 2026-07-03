@@ -212,7 +212,7 @@ async def fetch_commit_activity_rest(
     Aggregate weekly commit counts across all repos concurrently.
     """
     weekly_totals = [0] * 52
-    sem = asyncio.Semaphore(25)
+    sem = asyncio.Semaphore(50)
 
     tasks = [
         fetch_repo_commit_activity(client, username, repo["name"], sem)
@@ -279,7 +279,7 @@ async def stream_all_repo_data(username: str) -> AsyncGenerator[str, None]:
                     "progress", f"Analyzing 0 of {total_repos} repositories..."
                 )
                 
-                sem = asyncio.Semaphore(25)
+                sem = asyncio.Semaphore(50)
                 
                 async def check_readme_sem(r_name):
                     async with sem:
