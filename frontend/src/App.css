@@ -1009,74 +1009,90 @@ h1, h2, h3, h4, h5, h6, .font-medium {
   color: var(--text-muted);
 }
 
-/* SIMPLE ABOUT VIEW */
-.about-container-simple {
+/* MANIFESTO ABOUT VIEW */
+.about-hero-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 48px 16px 80px 16px;
-  text-align: center;
+  padding: 32px 16px 80px 16px;
 }
 
-.about-header-simple {
-  margin-bottom: 32px;
-}
-
-.about-title-simple {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--text-main);
-}
-
-.about-subtitle-simple {
-  font-size: 16px;
-  color: var(--text-muted);
-}
-
-.about-content-simple {
-  padding: 40px;
-  text-align: left;
+.about-manifesto {
+  padding: 48px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 48px;
+  background-color: #FFFFFF;
 }
 
-.about-section-simple h3 {
+.about-manifesto-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 2px solid var(--card-border);
+  padding-bottom: 40px;
+}
+
+.about-manifesto-icon {
+  background-color: rgba(127, 119, 221, 0.1);
+  padding: 16px;
+  border-radius: 20px;
+}
+
+.about-manifesto-header h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+}
+
+.about-manifesto-subtitle {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 500px;
+}
+
+.about-manifesto-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.about-manifesto-block {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.block-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.block-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.block-text h3 {
   font-size: 20px;
   font-weight: 700;
   color: var(--text-main);
-  margin-bottom: 16px;
-  border-bottom: 2px solid var(--card-border);
-  padding-bottom: 8px;
 }
 
-.about-section-simple p {
+.block-text p {
   font-size: 15px;
   line-height: 1.7;
   color: var(--text-muted);
-}
-
-.about-list-simple {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.about-list-simple li {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--text-muted);
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.about-list-simple strong {
-  color: var(--text-main);
-  font-weight: 600;
-  margin-right: 4px;
 }
 
 /* HOW IT WORKS SECTION EXPANSION */
