@@ -1,95 +1,50 @@
 import React from 'react';
-import { 
-  Compass, 
-  Layers, 
-  LineChart, 
-  GitCompare, 
-  CheckCircle2 
-} from 'lucide-react';
+import { GitPullRequest, Code, Database, Globe } from 'lucide-react';
 
 function AboutView() {
   return (
-    <div className="about-container">
-      <div className="about-split-layout">
-        {/* Left Column: Heading and Platform Concept */}
-        <div className="about-header-column">
-          <div className="about-badge">ABOUT GITPULSE</div>
-          <h2 className="about-main-heading">
-            Elevating GitHub Profile Analytics to the Next Level
-          </h2>
-          <p className="about-mission">
-            GitPulse bridges the gap between raw repository activity and explainable metrics. We believe public open-source contributions tell a developer's story—our mission is to make that story clear, structured, and actionable.
+    <div className="about-container-simple">
+      <div className="about-header-simple">
+        <GitPullRequest size={48} color="#7F77DD" style={{ marginBottom: '16px' }} />
+        <h2 className="about-title-simple">About GitPulse</h2>
+        <p className="about-subtitle-simple">Providing actionable, explainable GitHub profile analytics.</p>
+      </div>
+
+      <div className="about-content-simple glass-card">
+        <section className="about-section-simple">
+          <h3>Our Mission</h3>
+          <p>
+            GitPulse was created to bridge the gap between raw repository activity and explainable, structured metrics. We believe that public open-source contributions tell a unique developer story. Our goal is to make that story clear and actionable for developers, recruiters, and open-source maintainers.
           </p>
-          <div className="about-key-features-list">
-            <div className="about-key-feature-item">
-              <CheckCircle2 size={18} color="#3F8F6F" />
-              <span>100% Free of Cost (Public GitHub API)</span>
-            </div>
-            <div className="about-key-feature-item">
-              <CheckCircle2 size={18} color="#3F8F6F" />
-              <span>Parallel SSE-Stream Real-Time Analysis</span>
-            </div>
-            <div className="about-key-feature-item">
-              <CheckCircle2 size={18} color="#3F8F6F" />
-              <span>Comparison Engine for up to 3 Developers</span>
-            </div>
-          </div>
-        </div>
+        </section>
 
-        {/* Right Column: Platform Advantage Cards */}
-        <div className="about-cards-column">
-          {/* Card 1 */}
-          <div className="glass-card about-detail-card">
-            <div className="about-detail-icon purple">
-              <Compass size={24} />
-            </div>
-            <div className="about-detail-text">
-              <h4>Explainable Audits</h4>
-              <p>
-                No more guessing. We audit public repo licenses, commit counts, and readmes to compile a structured 0–100 health score mapping directly to specific point allocations.
-              </p>
-            </div>
-          </div>
+        <section className="about-section-simple">
+          <h3>How It's Built</h3>
+          <p>
+            The platform is engineered using a modern, full-stack architecture prioritizing speed and concurrency:
+          </p>
+          <ul className="about-list-simple">
+            <li>
+              <Code size={18} color="#3F8F6F" />
+              <strong>Frontend:</strong> Built with React and Vite, featuring custom CSS styling and interactive Recharts data visualizations.
+            </li>
+            <li>
+              <Database size={18} color="#3B82F6" />
+              <strong>Backend:</strong> Powered by FastAPI and Python, utilizing <code>asyncio.gather</code> and connection semaphores to fetch and process dozens of repository metadata concurrently.
+            </li>
+            <li>
+              <Globe size={18} color="#D9A441" />
+              <strong>Data Layer:</strong> Integrates both GitHub REST API (v3) and GraphQL API (v4) to aggregate deep commit histories seamlessly.
+            </li>
+          </ul>
+        </section>
 
-          {/* Card 2 */}
-          <div className="glass-card about-detail-card">
-            <div className="about-detail-icon green">
-              <Layers size={24} />
-            </div>
-            <div className="about-detail-text">
-              <h4>Asynchronous Speed</h4>
-              <p>
-                Our FastAPI backend utilizes concurrent worker pools to execute parallel repository requests, keeping complete analyses under 7 seconds—even for large accounts.
-              </p>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="glass-card about-detail-card">
-            <div className="about-detail-icon blue">
-              <LineChart size={24} />
-            </div>
-            <div className="about-detail-text">
-              <h4>Actionable Booster Tips</h4>
-              <p>
-                Receive automated, rule-based suggestions outlining the exact paths to boost your profile, fix missing documents, and raise your global grade.
-              </p>
-            </div>
-          </div>
-
-          {/* Card 4 */}
-          <div className="glass-card about-detail-card">
-            <div className="about-detail-icon amber">
-              <GitCompare size={24} />
-            </div>
-            <div className="about-detail-text">
-              <h4>Multi-Developer Matches</h4>
-              <p>
-                Recruiters and hiring managers can test up to 3 developers concurrently. We spin up parallelSSE streams, side-by-side cards, and crown the winner dynamically.
-              </p>
-            </div>
-          </div>
-        </div>
+        <section className="about-section-simple">
+          <h3>Free & Open Source</h3>
+          <p>
+            GitPulse operates entirely free of charge. By leveraging public GitHub API endpoints, we ensure that every developer can audit their profile and gain actionable insights without any barriers.
+          </p>
+        </section>
       </div>
     </div>
   );

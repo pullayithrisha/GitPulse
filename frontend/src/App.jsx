@@ -476,9 +476,6 @@ function App() {
           <span className="footer-copyright">
             &copy; {new Date().getFullYear()} GitPulse. All rights reserved.
           </span>
-          <span className="footer-status">
-            Powered by GitHub Public REST &amp; GraphQL APIs
-          </span>
         </div>
       </footer>
     </div>

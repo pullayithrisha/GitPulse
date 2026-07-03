@@ -1,10 +1,13 @@
-import { AlertCircle, Ghost, Network } from 'lucide-react';
+import { AlertCircle, Ghost, Network, Search } from 'lucide-react';
 
 function EmptyState({ type, message, onRetry }) {
   let Icon = AlertCircle;
   let title = "Oops! Something went wrong.";
 
-  if (type === 'error') {
+  if (type === 'empty') {
+    Icon = Search;
+    title = "Ready to Analyze";
+  } else if (type === 'error') {
     if (message.toLowerCase().includes('not found')) {
       Icon = Ghost;
       title = "User Not Found";
