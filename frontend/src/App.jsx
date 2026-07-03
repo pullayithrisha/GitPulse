@@ -12,6 +12,7 @@ import MetricCard from './components/MetricCard';
 import CompareColumn from './components/CompareColumn';
 import HowItWorksView from './components/HowItWorksView';
 import AboutView from './components/AboutView';
+import BoostScoreView from './components/BoostScoreView';
 import { GitPullRequest, Search, RefreshCw } from 'lucide-react';
 
 function App() {
@@ -226,6 +227,12 @@ function App() {
                 onClick={() => setActiveTab('how-it-works')}
               >
                 How It Works
+              </li>
+              <li 
+                className={`navbar-item ${activeTab === 'boost-score' ? 'active' : ''}`}
+                onClick={() => setActiveTab('boost-score')}
+              >
+                Boost Score
               </li>
               <li 
                 className={`navbar-item ${activeTab === 'about' ? 'active' : ''}`}
@@ -459,7 +466,21 @@ function App() {
 
       {activeTab === 'how-it-works' && <HowItWorksView />}
 
+      {activeTab === 'boost-score' && <BoostScoreView />}
+
       {activeTab === 'about' && <AboutView />}
+
+      {/* GLOBAL FOOTER */}
+      <footer className="footer">
+        <div className="footer-container">
+          <span className="footer-copyright">
+            &copy; {new Date().getFullYear()} GitPulse. All rights reserved.
+          </span>
+          <span className="footer-status">
+            Powered by GitHub Public REST &amp; GraphQL APIs
+          </span>
+        </div>
+      </footer>
     </div>
   );
 }

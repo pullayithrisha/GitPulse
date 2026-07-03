@@ -1,53 +1,92 @@
 import React from 'react';
-import { Terminal, Users, Cpu, ShieldAlert } from 'lucide-react';
+import { 
+  Compass, 
+  Layers, 
+  LineChart, 
+  GitCompare, 
+  CheckCircle2 
+} from 'lucide-react';
 
 function AboutView() {
   return (
     <div className="about-container">
-      <div className="glass-card about-card">
-        <h2 className="about-title">About GitPulse</h2>
-        <p className="about-intro">
-          GitPulse is a developer-focused analytics dashboard designed to compute a clean, objective <strong>GitHub Profile Health Score</strong>. By looking at public repository activity, community metrics, code diversity, and documentation practices, GitPulse compiles an instant benchmark report.
-        </p>
-
-        <div className="about-grid">
-          <div className="about-item">
-            <div className="about-item-icon">
-              <Terminal size={22} />
+      <div className="about-split-layout">
+        {/* Left Column: Heading and Platform Concept */}
+        <div className="about-header-column">
+          <div className="about-badge">ABOUT GITPULSE</div>
+          <h2 className="about-main-heading">
+            Elevating GitHub Profile Analytics to the Next Level
+          </h2>
+          <p className="about-mission">
+            GitPulse bridges the gap between raw repository activity and explainable metrics. We believe public open-source contributions tell a developer's story—our mission is to make that story clear, structured, and actionable.
+          </p>
+          <div className="about-key-features-list">
+            <div className="about-key-feature-item">
+              <CheckCircle2 size={18} color="#3F8F6F" />
+              <span>100% Free of Cost (Public GitHub API)</span>
             </div>
-            <div>
-              <h5>For Developers</h5>
-              <p>Benchmark your open-source presence, identify weak spots in repository documentation or licenses, and receive automated recommendations on how to polish your public profile for recruiters.</p>
+            <div className="about-key-feature-item">
+              <CheckCircle2 size={18} color="#3F8F6F" />
+              <span>Parallel SSE-Stream Real-Time Analysis</span>
+            </div>
+            <div className="about-key-feature-item">
+              <CheckCircle2 size={18} color="#3F8F6F" />
+              <span>Comparison Engine for up to 3 Developers</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Platform Advantage Cards */}
+        <div className="about-cards-column">
+          {/* Card 1 */}
+          <div className="glass-card about-detail-card">
+            <div className="about-detail-icon purple">
+              <Compass size={24} />
+            </div>
+            <div className="about-detail-text">
+              <h4>Explainable Audits</h4>
+              <p>
+                No more guessing. We audit public repo licenses, commit counts, and readmes to compile a structured 0–100 health score mapping directly to specific point allocations.
+              </p>
             </div>
           </div>
 
-          <div className="about-item">
-            <div className="about-item-icon">
-              <Users size={22} />
+          {/* Card 2 */}
+          <div className="glass-card about-detail-card">
+            <div className="about-detail-icon green">
+              <Layers size={24} />
             </div>
-            <div>
-              <h5>For Recruiters & Managers</h5>
-              <p>Compare candidates side-by-side. Understand developer activity patterns and open-source contributions without having to manually read hundreds of repository logs.</p>
-            </div>
-          </div>
-
-          <div className="about-item">
-            <div className="about-item-icon">
-              <Cpu size={22} />
-            </div>
-            <div>
-              <h5>Tech Stack</h5>
-              <p>Built with Fast API (Python) for fast concurrently gathered server-side calculations, React (Vite) for state transitions and tab views, and Recharts for clean data visualizations.</p>
+            <div className="about-detail-text">
+              <h4>Asynchronous Speed</h4>
+              <p>
+                Our FastAPI backend utilizes concurrent worker pools to execute parallel repository requests, keeping complete analyses under 7 seconds—even for large accounts.
+              </p>
             </div>
           </div>
 
-          <div className="about-item">
-            <div className="about-item-icon">
-              <ShieldAlert size={22} />
+          {/* Card 3 */}
+          <div className="glass-card about-detail-card">
+            <div className="about-detail-icon blue">
+              <LineChart size={24} />
             </div>
-            <div>
-              <h5>Rate Limits & Costs</h5>
-              <p>GitPulse operates entirely free of cost. It makes use of the standard, public GitHub APIs. Unauthenticated queries are limited to 60 queries/hour, but you can configure a personal access token for higher limits.</p>
+            <div className="about-detail-text">
+              <h4>Actionable Booster Tips</h4>
+              <p>
+                Receive automated, rule-based suggestions outlining the exact paths to boost your profile, fix missing documents, and raise your global grade.
+              </p>
+            </div>
+          </div>
+
+          {/* Card 4 */}
+          <div className="glass-card about-detail-card">
+            <div className="about-detail-icon amber">
+              <GitCompare size={24} />
+            </div>
+            <div className="about-detail-text">
+              <h4>Multi-Developer Matches</h4>
+              <p>
+                Recruiters and hiring managers can test up to 3 developers concurrently. We spin up parallelSSE streams, side-by-side cards, and crown the winner dynamically.
+              </p>
             </div>
           </div>
         </div>
