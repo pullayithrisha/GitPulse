@@ -56,7 +56,8 @@ function App() {
     setData(null);
     setProgressMsg('Connecting to server...');
 
-    const url = `http://localhost:8000/api/analyze/${searchUsername}`;
+    const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    const url = `${API_BASE_URL}/api/analyze/${searchUsername}`;
     const source = new EventSource(url);
     setEventSource(source);
 
@@ -111,7 +112,8 @@ function App() {
       if (!username) continue;
 
       newLoaders[i] = true;
-      const url = `http://localhost:8000/api/analyze/${username}`;
+      const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const url = `${API_BASE_URL}/api/analyze/${username}`;
       const source = new EventSource(url);
       newSources[i] = source;
 
