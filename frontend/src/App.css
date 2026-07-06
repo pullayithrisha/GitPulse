@@ -108,6 +108,58 @@ h1, h2, h3, h4, h5, h6, .font-medium {
   }
 }
 
+.compare-promo-banner {
+  margin-top: 28px;
+  padding: 14px 16px;
+  background: rgba(127, 119, 221, 0.04);
+  border: 1px solid rgba(127, 119, 221, 0.15);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(127, 119, 221, 0.05);
+}
+
+@media (min-width: 600px) {
+  .compare-promo-banner {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.compare-promo-banner:hover {
+  background: rgba(127, 119, 221, 0.08);
+  transform: translateY(-2px);
+  border-color: rgba(127, 119, 221, 0.3);
+  box-shadow: 0 8px 24px rgba(127, 119, 221, 0.1);
+}
+
+.compare-promo-banner p {
+  font-size: 14px;
+  color: var(--text-main);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.compare-promo-banner strong {
+  color: #7F77DD;
+}
+
+.promo-badge {
+  background: linear-gradient(135deg, #7F77DD, #1D9E75);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 .input-wrapper {
   position: relative;
   width: 100%;

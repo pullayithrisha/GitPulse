@@ -269,6 +269,14 @@ function App() {
           <div className="hero-section">
             <div className="hero-content">
               <SearchBar onSearch={analyzeProfile} isLoading={loading} />
+              
+              <div 
+                className="compare-promo-banner" 
+                onClick={() => handleTabClick('compare')}
+              >
+                <span className="promo-badge">Try It</span>
+                <p>Want to compare multiple developers side-by-side? <strong>Click here to try Compare Mode &rarr;</strong></p>
+              </div>
             </div>
           </div>
 
