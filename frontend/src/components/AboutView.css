@@ -32,12 +32,18 @@
 }
 
 .about-title {
-  font-size: 46px;
+  font-size: 32px;
   font-weight: 800;
   color: var(--text-main);
   margin-bottom: 16px;
   letter-spacing: -1.5px;
   line-height: 1.15;
+}
+
+@media (min-width: 768px) {
+  .about-title {
+    font-size: 46px;
+  }
 }
 
 .about-title-gradient {
@@ -70,12 +76,18 @@
   background: #FFFFFF;
   border: 1px solid var(--card-border);
   border-radius: 24px;
-  padding: 40px 32px;
+  padding: 24px 20px;
   transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   box-shadow: 0 10px 30px -10px rgba(133, 124, 110, 0.08);
   position: relative;
   overflow: hidden;
   z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .about-card {
+    padding: 40px 32px;
+  }
 }
 
 .about-card::before {
