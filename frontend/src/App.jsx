@@ -212,17 +212,19 @@ function App() {
       {/* GLOBAL NAVBAR HEADER */}
       <header className="navbar-header">
         <div className="navbar-container">
-          <div className="navbar-logo" onClick={() => handleTabClick('home')}>
-            <GitPullRequest size={24} color="#7F77DD" />
-            <span className="wordmark-text">GitPulse</span>
-          </div>
-
           <button 
             className="mobile-menu-btn"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
+
+          <div className="navbar-logo" onClick={() => handleTabClick('home')}>
+            <GitPullRequest size={24} color="#7F77DD" />
+            <span className="wordmark-text">GitPulse</span>
+          </div>
+          
+          <div className="mobile-spacer"></div>
 
           <nav className={`navbar-nav ${isMobileMenuOpen ? 'open' : ''}`}>
             <ul className="navbar-menu">

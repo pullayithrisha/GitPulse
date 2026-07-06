@@ -584,6 +584,12 @@ h1, h2, h3, h4, h5, h6, .font-medium {
   cursor: pointer;
   z-index: 101;
   padding: 4px;
+  width: 32px;
+}
+
+.mobile-spacer {
+  width: 32px;
+  display: block;
 }
 
 .navbar-nav {
@@ -648,7 +654,8 @@ h1, h2, h3, h4, h5, h6, .font-medium {
     padding: 14px 16px;
   }
   
-  .mobile-menu-btn {
+  .mobile-menu-btn,
+  .mobile-spacer {
     display: none;
   }
   
