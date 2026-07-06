@@ -17,11 +17,35 @@ import { GitPullRequest, Search, RefreshCw, Menu, X } from 'lucide-react';
 
 function App() {
   // Navigation State
-  const [activeTab, setActiveTab] = useState('home');
+  const [activeTab, setActiveTab] = useState(() => {
+    const hash = window.location.hash.replace('#', '');
+    const validTabs = ['home', 'compare', 'how-it-works', 'boost-score', 'about'];
+    return validTabs.includes(hash) ? hash : 'home';
+  });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
+  // Handle mobile back-swipe and browser back/forward buttons
+  useEffect(() => {
+    const handlePopState = () => {
+      const hash = window.location.hash.replace('#', '');
+      const validTabs = ['home', 'compare', 'how-it-works', 'boost-score', 'about'];
+      setActiveTab(validTabs.includes(hash) ? hash : 'home');
+      setIsMobileMenuOpen(false);
+    };
+    
+    if (!window.location.hash) {
+      window.history.replaceState(null, '', '#home');
+    }
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   const handleTabClick = (tab) => {
-    setActiveTab(tab);
+    if (tab !== activeTab) {
+      window.history.pushState(null, '', `#${tab}`);
+      setActiveTab(tab);
+    }
     setIsMobileMenuOpen(false);
   };
 
