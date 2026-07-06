@@ -281,14 +281,33 @@ async def stream_all_repo_data(username: str) -> AsyncGenerator[str, None]:
                 
                 sem = asyncio.Semaphore(50)
                 
-                async def check_readme_sem(r_name):
+                async def check_readme_sem(idx, r_name):
                     async with sem:
-                        return await check_repo_readme(client, username, r_name)
-                        
-                tasks = [check_readme_sem(r["name"]) for r in all_repos]
-                results = await asyncio.gather(*tasks, return_exceptions=True)
+                        try:
+                            res = await check_repo_readme(client, username, r_name)
+                            return idx, res
+                        except Exception as e:
+                            return idx, e
+                            
+                tasks = [
+                    asyncio.create_task(check_readme_sem(i, r["name"]))
+                    for i, r in enumerate(all_repos)
+                ]
+                
+                readme_results = [None] * total_repos
+                completed = 0
+                
+                for task in asyncio.as_completed(tasks):
+                    idx, res = await task
+                    readme_results[idx] = res
+                    completed += 1
+                    
+                    if completed % 10 == 0 or completed == total_repos:
+                        yield format_sse(
+                            "progress", f"Analyzing {completed} of {total_repos} repositories..."
+                        )
 
-                for j, res in enumerate(results):
+                for j, res in enumerate(readme_results):
                     repo = all_repos[j]
                     has_readme = False
                     if isinstance(res, RateLimitException):
@@ -308,11 +327,6 @@ async def stream_all_repo_data(username: str) -> AsyncGenerator[str, None]:
                             "has_readme": has_readme,
                         }
                     )
-
-                yield format_sse(
-                    "progress",
-                    f"Analyzed {total_repos} of {total_repos} repositories...",
-                )
 
             final_data = {
                 "profile": {
