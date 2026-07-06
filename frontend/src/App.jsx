@@ -13,11 +13,17 @@ import CompareColumn from './components/CompareColumn';
 import HowItWorksView from './components/HowItWorksView';
 import AboutView from './components/AboutView';
 import BoostScoreView from './components/BoostScoreView';
-import { GitPullRequest, Search, RefreshCw } from 'lucide-react';
+import { GitPullRequest, Search, RefreshCw, Menu, X } from 'lucide-react';
 
 function App() {
   // Navigation State
   const [activeTab, setActiveTab] = useState('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+    setIsMobileMenuOpen(false);
+  };
 
   // 1. Home Profile State
   const [data, setData] = useState(null);
@@ -206,39 +212,47 @@ function App() {
       {/* GLOBAL NAVBAR HEADER */}
       <header className="navbar-header">
         <div className="navbar-container">
-          <div className="navbar-logo" onClick={() => setActiveTab('home')}>
+          <div className="navbar-logo" onClick={() => handleTabClick('home')}>
             <GitPullRequest size={24} color="#7F77DD" />
             <span className="wordmark-text">GitPulse</span>
           </div>
-          <nav>
+
+          <button 
+            className="mobile-menu-btn"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
+          <nav className={`navbar-nav ${isMobileMenuOpen ? 'open' : ''}`}>
             <ul className="navbar-menu">
               <li 
                 className={`navbar-item ${activeTab === 'home' ? 'active' : ''}`}
-                onClick={() => setActiveTab('home')}
+                onClick={() => handleTabClick('home')}
               >
                 Home
               </li>
               <li 
                 className={`navbar-item ${activeTab === 'compare' ? 'active' : ''}`}
-                onClick={() => setActiveTab('compare')}
+                onClick={() => handleTabClick('compare')}
               >
                 Compare
               </li>
               <li 
                 className={`navbar-item ${activeTab === 'how-it-works' ? 'active' : ''}`}
-                onClick={() => setActiveTab('how-it-works')}
+                onClick={() => handleTabClick('how-it-works')}
               >
                 How It Works
               </li>
               <li 
                 className={`navbar-item ${activeTab === 'boost-score' ? 'active' : ''}`}
-                onClick={() => setActiveTab('boost-score')}
+                onClick={() => handleTabClick('boost-score')}
               >
                 Boost Score
               </li>
               <li 
                 className={`navbar-item ${activeTab === 'about' ? 'active' : ''}`}
-                onClick={() => setActiveTab('about')}
+                onClick={() => handleTabClick('about')}
               >
                 About
               </li>

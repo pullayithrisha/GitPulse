@@ -559,52 +559,77 @@ h1, h2, h3, h4, h5, h6, .font-medium {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
+  position: relative;
 }
 
 .navbar-logo {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
   gap: 8px;
   text-decoration: none;
   color: var(--text-main);
   font-size: 22px;
   font-weight: 700;
   cursor: pointer;
+  z-index: 101;
 }
 
-nav {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding-bottom: 4px;
+.mobile-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  cursor: pointer;
+  z-index: 101;
+  padding: 4px;
 }
 
-nav::-webkit-scrollbar {
-  display: none;
+.navbar-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: rgba(251, 247, 240, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 16px;
+  border-bottom: 1px solid var(--card-border);
+  box-shadow: 0 10px 20px rgba(133, 124, 110, 0.1);
+  display: flex;
+  flex-direction: column;
+  transform: translateY(-10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 100;
+}
+
+.navbar-nav.open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
 }
 
 .navbar-menu {
   display: flex;
-  justify-content: flex-start;
-  gap: 6px;
+  flex-direction: column;
+  gap: 8px;
   list-style: none;
-  min-width: max-content;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .navbar-item {
   color: var(--text-muted);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  padding: 8px 16px;
-  border-radius: 100px;
+  padding: 12px 16px;
+  border-radius: 12px;
   transition: all var(--transition-speed) ease;
+  width: 100%;
+  text-align: center;
 }
 
 .navbar-item:hover {
@@ -615,25 +640,47 @@ nav::-webkit-scrollbar {
 .navbar-item.active {
   color: #7F77DD;
   background-color: rgba(127, 119, 221, 0.1);
-  box-shadow: 0 2px 8px rgba(127, 119, 221, 0.15);
+  box-shadow: inset 0 2px 4px rgba(127, 119, 221, 0.05);
 }
 
 @media (min-width: 768px) {
   .navbar-container {
-    flex-wrap: nowrap;
     padding: 14px 16px;
   }
-  .navbar-logo {
-    width: auto;
-    justify-content: flex-start;
+  
+  .mobile-menu-btn {
+    display: none;
   }
-  nav {
+  
+  .navbar-nav {
+    position: static;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    flex-direction: row;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
     width: auto;
-    overflow-x: visible;
-    padding-bottom: 0;
   }
+  
   .navbar-menu {
-    justify-content: flex-end;
+    flex-direction: row;
+    width: auto;
+  }
+  
+  .navbar-item {
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    width: auto;
+  }
+  
+  .navbar-item.active {
+    box-shadow: 0 2px 8px rgba(127, 119, 221, 0.15);
   }
 }
 
