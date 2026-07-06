@@ -69,11 +69,17 @@ h1, h2, h3, h4, h5, h6, .font-medium {
 .wordmark {
   font-size: 26px;
   font-weight: 700;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   gap: 8px;
   margin-bottom: 6px;
+}
+
+@media (min-width: 768px) {
+  .wordmark {
+    display: flex;
+  }
 }
 
 .wordmark-text {
